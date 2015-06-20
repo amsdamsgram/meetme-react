@@ -25,7 +25,7 @@ class Appt extends React.Component{
     render(){
 
         return (
-            <div>
+            <div key={this.props.appt.id}>
                 <span>{this._toString()}</span>
                 <a href="#" className="delete-btn">Delete</a>
             </div>
@@ -39,6 +39,7 @@ Appt.propTypes = {
 };
 Appt.defaultProps = {
     appt: {
+        id: 0,
         name: 'No Name',
         date: null
     }

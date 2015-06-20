@@ -12,7 +12,8 @@ import ApptEdit from './ApptEdit.jsx';
 function getState(){
 
     return {
-        apptList: ApptStore.getAll()
+        apptList: ApptStore.getAll(),
+        addMode: false
     }
 
 }
@@ -55,7 +56,7 @@ class HomePageContent extends React.Component{
                 <a href="#" className="button btn-add-appt" onClick={this._onClick}>Add Appointment</a>
                 {addAppt}
                 <ApptList
-                    list={this.state.apptList}
+                    apptList={this.state.apptList}
                     addMode={this.state.addMode} />
             </section>
         )

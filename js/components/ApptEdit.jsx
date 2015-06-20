@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+import ApptActions from '../actions/ApptActions.js';
 
 class ApptEdit extends React.Component{
 
@@ -13,8 +14,13 @@ class ApptEdit extends React.Component{
         this._onCancel = this._onCancel.bind(this);
     }
 
-    _onSubmit(){
+    _onSubmit(e){
 
+        e.preventDefault();
+        var name = React.findDOMNode(this.refs.name).value.trim();
+        var date = null;
+
+        ApptActions.create(name,date);
     }
     _onCancel(){
         this.props.onCancel(this);

@@ -15,11 +15,12 @@ class ApptList extends React.Component{
 
     render(){
 
-        var listNode = this.props.apptList.map(function(appt){
-            return (
-                <Appt appt={appt} />
-            )
-        });
+        var appts = this.props.apptList;
+        var listNode = [];
+
+        for (var key in appts) {
+            listNode.push(<Appt key={key} appt={appts[key]} />);
+        }
 
         return (
             <section id="appt-list">
@@ -31,10 +32,10 @@ class ApptList extends React.Component{
 
 };
 ApptList.propTypes = {
-    apptList: React.PropTypes.array
+    apptList: React.PropTypes.object
 };
 ApptList.defaultProps = {
-    apptList:[]
+    apptList:{}
 };
 
 export default ApptList;
