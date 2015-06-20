@@ -15,9 +15,9 @@ class ApptList extends React.Component{
 
     render(){
 
-        var listNode = this.props.list.map(function(appt){
+        var listNode = this.props.apptList.map(function(appt){
             return (
-                <Appt />
+                <Appt appt={appt} />
             )
         });
 
@@ -31,10 +31,10 @@ class ApptList extends React.Component{
 
 };
 ApptList.propTypes = {
-    list: React.PropTypes.array
+    apptList: React.PropTypes.array
 };
 ApptList.defaultProps = {
-    list:[]
+    apptList:[]
 };
 
 export default ApptList;

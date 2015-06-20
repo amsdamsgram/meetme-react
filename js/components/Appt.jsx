@@ -12,12 +12,22 @@ class Appt extends React.Component{
         super(props);
     }
 
+    _toString(){
+
+        var str = this.props.appt.name;
+
+        str += this.props.appt.date ? ' - '+this.props.appt.date : '';
+
+        return str;
+
+    }
+
     render(){
 
         return (
             <div>
-                <span>{this.props.name} - {this.props.date}</span>
-                <a href="#" className="icon-cog"></a>
+                <span>{this._toString()}</span>
+                <a href="#" className="delete-btn">Delete</a>
             </div>
         )
 
@@ -25,12 +35,13 @@ class Appt extends React.Component{
 
 };
 Appt.propTypes = {
-    name: React.PropTypes.string,
-    date: React.PropTypes.object
+    appt: React.PropTypes.object
 };
 Appt.defaultProps = {
-    name: 'No Name',
-    data: null
+    appt: {
+        name: 'No Name',
+        date: null
+    }
 };
 
 export default Appt;
