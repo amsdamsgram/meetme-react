@@ -19,7 +19,8 @@ class ApptList extends React.Component{
         var listNode = [];
 
         for (var key in appts) {
-            listNode.push(<Appt key={key} appt={appts[key]} />);
+            listNode.push(
+                <Appt key={key} appt={appts[key]} />);
         }
 
         return (

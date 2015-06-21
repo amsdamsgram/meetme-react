@@ -2,17 +2,19 @@
  * Created by idams on 6/20/15.
  */
 
+'use strict'
+
 import AppDispatcher from '../dispatcher/AppDispatcher.js';
 import ApptConstants from '../constants/ApptConstants.js';
 
 var ApptActions = {
 
-    create(name,date){
+    create(name,time){
 
         AppDispatcher.dispatch({
             actionType: ApptConstants.APPT_CREATE,
             name: name,
-            date: date
+            time: time
         });
 
     },

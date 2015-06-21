@@ -55,20 +55,12 @@ class HomePageContent extends React.Component{
             <section className="row content">
                 <a href="#" className="button btn-add-appt" onClick={this._onClick}>Add Appointment</a>
                 {addAppt}
-                <ApptList
-                    apptList={this.state.apptList}
-                    addMode={this.state.addMode} />
+                <ApptList apptList={this.state.apptList} />
             </section>
         )
 
     }
 
-};
-ApptEdit.propTypes = {
-    addMode: React.PropTypes.bool
-};
-ApptEdit.defaultProps = {
-    addMode: false
 };
 
 export default HomePageContent;
