@@ -15,7 +15,7 @@ class TimePicker extends React.Component{
     }
 
     _onChange(e){
-        this.props.onChange(e.target.value);
+        this.props.onChange(e.target.value.trim());
     }
 
     render(){
@@ -26,11 +26,12 @@ class TimePicker extends React.Component{
             var abbr = i < 12 ? ' AM' : ' PM';
             var value = i % 12 === 0 ? 12 : i % 12;
             var time = value.toFixed(2)+abbr;
+
             options.push(<option key={i} value={time}>{time}</option>)
         }
 
         return (
-            <select ref="time" onChange={this._onChange}>
+            <select onChange={this._onChange} value={this.props.time}>
                 {options}
             </select>
         )

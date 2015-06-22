@@ -14,8 +14,8 @@ class Header extends React.Component{
 
     render(){
         return (
-            <header className="fixed">
-                <nav className="row top-bar" data-topbar role="navigation">Meet Me</nav>
+            <header>
+                <nav className="row" data-topbar role="navigation">Meet Me</nav>
             </header>
         )
     }

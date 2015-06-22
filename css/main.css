@@ -49,6 +49,9 @@ input{
     content: "";
     display: table;
 }
+.disabled{
+    opacity: 0.4;
+}
 
 /* END RESET */
 
@@ -81,4 +84,34 @@ nav{
 }
 #homepage .content .btn-add-appt:hover{
     background-color: #FF80AB;
+}
+
+#homepage .panel{
+    margin: 0 auto 15px auto;
+}
+#homepage form input[type=submit]{
+    margin-right: 10px;
+}
+
+#apptList{
+    margin: 30px auto;
+}
+#apptList .apptRow{
+    border-bottom: 1px solid #E0E0E0;
+    float: left;
+    width: 100%;
+}
+#apptList .apptRow:hover{
+    background-color: #FAFAFA;
+}
+#apptList .apptName{
+    text-align: left;
+    cursor: pointer;
+}
+#apptList .apptName,
+#apptList .delete-btn{
+    padding: 15px;
+}
+#apptList .disabled .delete-btn{
+    display: none;
 }

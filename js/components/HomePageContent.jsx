@@ -7,13 +7,15 @@
 import React from 'react';
 import ApptList from './ApptList.jsx';
 import ApptStore from '../stores/ApptStore.js';
+import ApptActions from '../actions/ApptActions.js';
+import ApptConstants from '../constants/ApptConstants.js';
 import ApptEdit from './ApptEdit.jsx';
 
 function getState(){
 
     return {
-        apptList: ApptStore.getAll(),
-        addMode: false
+        apptList: ApptStore.getAllAppts(),
+        addMode: ApptStore.getAddMode()
     }
 
 }
@@ -25,31 +27,27 @@ class HomePageContent extends React.Component{
 
         this.state = getState();
 
-        this._onCancel = this._onCancel.bind(this);
         this._onChange = this._onChange.bind(this);
         this._onClick = this._onClick.bind(this);
     }
 
     componentDidMount(){
-        ApptStore.addChangeListener(this._onChange);
+        ApptStore.addEventListener(ApptConstants.CHANGE_EVENT,this._onChange);
     }
     componentWillUnmount(){
-        ApptStore.removeChangeListener(this._onChange);
+        ApptStore.removeEventListener(ApptConstants.CHANGE_EVENT,this._onChange);
     }
 
     _onChange(){
         this.setState(getState());
     }
     _onClick(){
-        this.setState({addMode:true});
-    }
-    _onCancel(){
-        this.setState({addMode:false});
+        ApptActions.toggleAddMode(true);
     }
 
     render(){
 
-        var addAppt = this.state.addMode ? <ApptEdit onCancel={this._onCancel} /> : null;
+        var addAppt = this.state.addMode ? <ApptEdit /> : null;
 
         return (
             <section className="row content">

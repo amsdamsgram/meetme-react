@@ -24,7 +24,7 @@ class ApptList extends React.Component{
         }
 
         return (
-            <section id="appt-list">
+            <section id="apptList" className="large-8">
                 {listNode}
             </section>
         )
