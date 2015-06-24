@@ -17,7 +17,7 @@ class Appt extends React.Component{
     constructor(props){
         super(props);
 
-        this.state = {editMode:false};
+        this.state = {editMode:null};
 
         this._deleteAppt = this._deleteAppt.bind(this);
         this._onClick = this._onClick.bind(this);
@@ -38,7 +38,8 @@ class Appt extends React.Component{
         this.setState({editMode:ApptStore.getEditMode()});
     }
     _onClick(){
-        ApptActions.toggleEditMode(!this.state.editMode);
+        var id = this.state.editMode === this.props.appt.id ? null : this.props.appt.id;
+        ApptActions.toggleEditMode(id);
     }
     _toString(){
 
@@ -51,9 +52,11 @@ class Appt extends React.Component{
     }
 
     render(){
-        var editAppt = this.state.editMode ? <ApptEdit id={this.props.appt.id} /> : null;
+        var isEditing = this.state.editMode === this.props.appt.id;
+
+        var editAppt =  isEditing ? <ApptEdit id={this.props.appt.id} /> : null;
         var apptClass = 'clear ';
-        if( this.state.editMode ) apptClass += 'disabled';
+        if( isEditing ) apptClass += 'disabled';
 
         return (
             <div key={this.props.appt.id} className="apptRow">

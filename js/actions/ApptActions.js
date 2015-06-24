@@ -38,11 +38,11 @@ var ApptActions = {
 
     },
 
-    toggleEditMode(mode){
+    toggleEditMode(apptId){
 
         AppDispatcher.dispatch({
             actionType: ApptConstants.APPT_EDITMODE,
-            mode: mode
+            id: apptId
         })
 
     }
