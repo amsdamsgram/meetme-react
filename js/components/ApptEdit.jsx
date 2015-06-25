@@ -59,7 +59,7 @@ class ApptEdit extends React.Component{
         }
     }
     _onNameChange(e){
-        var value = e.target.value.trim();
+        var value = e.target.value;
         this.setState({name:value,errorNameEmpty:false});
     }
     _onTimeChange(value){
