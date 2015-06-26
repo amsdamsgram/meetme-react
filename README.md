@@ -20,4 +20,3 @@ This project is using gulp.js to run the following tasks:
 ## Coming soon
 
 Store data in local storage
-Display appointments in the chronological order
