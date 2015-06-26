@@ -5,6 +5,7 @@
 'use strict'
 
 import React from 'react';
+import Utils from '../utils.js';
 
 class TimePicker extends React.Component{
 
@@ -20,14 +21,12 @@ class TimePicker extends React.Component{
 
     render(){
 
-        var options = [<option key="-1" value="0">--</option>];
+        var options = [<option key="-1" value="-1">--</option>];
 
         for(var i = 0; i < 24; i++){
-            var abbr = i < 12 ? ' AM' : ' PM';
-            var value = i % 12 === 0 ? 12 : i % 12;
-            var time = value.toFixed(2)+abbr;
+            var time = Utils._timeToString(i);
 
-            options.push(<option key={i} value={time}>{time}</option>)
+            options.push(<option key={i} value={i}>{time}</option>)
         }
 
         return (

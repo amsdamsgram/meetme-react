@@ -11,6 +11,7 @@ import ApptActions from '../actions/ApptActions.js';
 import ApptConstants from '../constants/ApptConstants.js';
 
 import ApptEdit from './ApptEdit.jsx';
+import Utils from '../utils.js';
 
 class Appt extends React.Component{
 
@@ -45,7 +46,7 @@ class Appt extends React.Component{
 
         var str = this.props.appt.name;
 
-        str += this.props.appt.time.length > 0 ? ' - '+this.props.appt.time : '';
+        str += this.props.appt.time.length > 0 ? ' - '+Utils._timeToString(this.props.appt.time) : '';
 
         return str;
 

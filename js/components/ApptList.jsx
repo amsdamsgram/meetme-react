@@ -23,6 +23,14 @@ class ApptList extends React.Component{
                 <Appt key={key} appt={appts[key]} />);
         }
 
+        if( listNode.length === 0 ){
+            listNode = <div>No appointments yet.</div>;
+        }else{
+            listNode.sort(function(a,b){
+                return a.props.appt.time - b.props.appt.time <= 0 ? -1 : 1;
+            })
+        }
+
         return (
             <section id="apptList" className="large-8">
                 {listNode}

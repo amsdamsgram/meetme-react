@@ -89,6 +89,12 @@ nav{
 #homepage .panel{
     margin: 0 auto;
 }
+#homepage form input[name=name]{
+    margin-bottom: 0;
+}
+#homepage form select{
+    margin-top: 1rem;
+}
 #homepage form input[type=submit]{
     margin-right: 10px;
 }
@@ -114,23 +120,4 @@ nav{
 }
 #apptList .disabled .delete-btn{
     display: none;
-}
-
-.panel.example-appear {
-    opacity: 0;
-    transition: all 5s ease-in;
-    -webkit-transition: all 5s ease-in;
-}
-
-.panel.example-appear.example-appear-active {
-    opacity: 1;
-}
-.panel.example-leave {
-    opacity: 1;
-    transition: all 5s ease-in;
-    -webkit-transition: all 5s ease-in;
-}
-
-.panel.example-leave.example-leave-active {
-    opacity: 0.01;
 }

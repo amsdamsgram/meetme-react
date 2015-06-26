@@ -55,7 +55,7 @@ class ApptEdit extends React.Component{
             return;
         }else{
             this.setState({errorNameEmpty:false});
-            ApptActions.create(this.state.name,this.state.time,this.props.id);
+            ApptActions.create(this.state.name.trim(),this.state.time,this.props.id);
         }
     }
     _onNameChange(e){
@@ -82,7 +82,7 @@ class ApptEdit extends React.Component{
             <div className={panelClass}>
                 <form>
                     <input
-                        type="text" placeholder="name"
+                        type="text" placeholder="name" name="name"
                         value={this.state.name}
                         onChange={this._onNameChange}
                         autoFocus={true}
