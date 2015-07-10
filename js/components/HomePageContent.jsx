@@ -11,10 +11,10 @@ import ApptActions from '../actions/ApptActions.js';
 import ApptConstants from '../constants/ApptConstants.js';
 import ApptEdit from './ApptEdit.jsx';
 
-function getState(){
+function getState(fromLS){
 
     return {
-        apptList: ApptStore.getAllAppts(),
+        apptList: ApptStore.getAllAppts(fromLS),
         addMode: ApptStore.getAddMode()
     }
 
@@ -25,7 +25,7 @@ class HomePageContent extends React.Component{
     constructor(props){
         super(props);
 
-        this.state = getState();
+        this.state = getState(true);
 
         this._onChange = this._onChange.bind(this);
         this._onClick = this._onClick.bind(this);
