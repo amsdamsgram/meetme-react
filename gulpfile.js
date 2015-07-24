@@ -11,7 +11,12 @@ var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 var buffer = require('vinyl-buffer');
 
-function build(watch,prod){
+var MODE = {
+    TEST:'test',
+    PROD: 'prod'
+}
+
+function build(watch,mode){
     var b = browserify({
                 cache: {},
                 packageCache: {},
@@ -24,7 +29,7 @@ function build(watch,prod){
 
     if( watch ) b = watchify(b);
 
-    createBundle(b,prod);
+    createBundle(b,mode);
 
     b.on('update',function(){
         createBundle(b)
@@ -42,14 +47,14 @@ function buildTest(){
     })
         .transform(['babelify', { compact: false }])
 
-    createBundle(b);
+    createBundle(b,MODE.TEST);
 }
 
-function createBundle(b,prod){
+function createBundle(b,mode){
 
     var bundle = b.bundle();
 
-    if( prod ){
+    if( mode === MODE.PROD ){
         bundle = bundle.pipe(source('bundle.min.js'))
             .pipe(buffer())
             .pipe(uglify());
@@ -59,7 +64,10 @@ function createBundle(b,prod){
             .pipe(sourcemaps.init())
             .pipe(sourcemaps.write('.'));
     }
-    bundle.pipe(gulp.dest('js/__tests__'));
+    var dest = 'js';
+    if( mode === MODE.TEST ) dest += '/__tests__';
+
+    bundle.pipe(gulp.dest(dest));
 
 }
 
