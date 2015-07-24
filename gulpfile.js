@@ -29,7 +29,20 @@ function build(watch,prod){
     b.on('update',function(){
         createBundle(b)
     });
+}
 
+function buildTest(){
+    var b = browserify({
+        cache: {},
+        packageCache: {},
+        fullPaths: true,
+        entries: 'js/__tests__/Appt-test.jsx',
+        extensions: ['.jsx'],
+        debug: false
+    })
+        .transform(['babelify', { compact: false }])
+
+    createBundle(b);
 }
 
 function createBundle(b,prod){
@@ -46,7 +59,7 @@ function createBundle(b,prod){
             .pipe(sourcemaps.init())
             .pipe(sourcemaps.write('.'));
     }
-    bundle.pipe(gulp.dest('js'));
+    bundle.pipe(gulp.dest('js/__tests__'));
 
 }
 
@@ -59,6 +72,12 @@ gulp.task('prod',function(){
 gulp.task('watch',function(){
 
     build(true);
+
+});
+
+gulp.task('test', function(){
+
+    buildTest();
 
 });
 

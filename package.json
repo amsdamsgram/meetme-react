@@ -2,11 +2,14 @@
   "name": "meetme-react",
   "version": "0.0.1",
   "devDependencies": {
+    "babel-jest": "^5.3.0",
     "babelify": "^6.1.2",
     "browserify": "^10.2.4",
     "gulp": "^3.9.0",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0",
+    "jest-cli": "^0.4.17",
+    "react-tools": "^0.13.3",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.2.2"
@@ -17,5 +20,15 @@
     "object-assign": "^3.0.0",
     "react": "^0.13.3",
     "react-addons": "^0.9.1-deprecated"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "scriptPreprocessor": "./node_modules/babel-jest",
+    "unmockedModulePathPatterns": [
+      "./node_modules/react",
+      "./node_modules/react-tools"
+    ]
   }
 }
